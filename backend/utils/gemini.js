@@ -1,0 +1,49 @@
+import { GoogleGenAI } from '@google/genai';
+
+export const analyzeResume = async (resumeText) => {
+  if (!process.env.GEMINI_API_KEY) {
+    throw new Error("GEMINI_API_KEY is not configured in the environment.");
+  }
+
+  // Initialize the Google Gen AI SDK
+  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+
+  try {
+    const prompt = `
+      You are an expert technical recruiter and AI Career Assistant.
+      I will provide you with the raw text extracted from a student's resume.
+      Your task is to analyze it and extract the following information in strict JSON format.
+      Do not include any markdown formatting like \`\`\`json or \`\`\`. Just return the raw JSON string.
+      
+      Extract the following fields:
+      - "name": The student's full name. If not found, return an empty string.
+      - "college": The student's college or university. If not found, return an empty string.
+      - "branch": The student's degree, major, or branch (e.g., Computer Science, Mechanical). If not found, return an empty string.
+      - "skills": An array of technical skills mentioned (e.g., ["JavaScript", "React", "Python"]).
+      - "aiReadinessScore": A number from 0 to 100 indicating how "placement-ready" the resume looks based on standard industry expectations for entry-level tech roles.
+      - "aiRoadmap": An array of 3 to 5 actionable steps the student can take to improve their skills and resume (e.g., ["Build a full-stack project using React and Node.js", "Contribute to open-source projects"]).
+
+      Resume Text:
+      """
+      ${resumeText}
+      """
+    `;
+
+    const response = await ai.models.generateContent({
+      model: 'gemini-2.5-pro',
+      contents: prompt,
+    });
+    
+    let textOutput = response.text;
+    
+    // Clean up any potential markdown formatting the model might mistakenly return
+    textOutput = textOutput.replace(/```json/gi, '').replace(/```/g, '').trim();
+    
+    const parsedData = JSON.parse(textOutput);
+    return parsedData;
+
+  } catch (error) {
+    console.error("Gemini API Error:", error);
+    throw new Error("Failed to analyze resume with AI.");
+  }
+};
