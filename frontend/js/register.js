@@ -30,6 +30,7 @@ togglePasswordBtn.addEventListener("click", () => {
   const isPassword = passwordInput.type === "password";
   passwordInput.type = isPassword ? "text" : "password";
   eyeIcon.setAttribute("data-lucide", isPassword ? "eye-off" : "eye");
+  togglePasswordBtn.setAttribute("aria-label", isPassword ? "Hide password" : "Show password");
   lucide.createIcons();
 });
 

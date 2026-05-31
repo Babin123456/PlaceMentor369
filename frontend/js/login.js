@@ -22,6 +22,7 @@ passwordToggleBtn.addEventListener("click", () => {
   const isPassword = passwordField.type === "password";
   passwordField.type = isPassword ? "text" : "password";
   eyeIcon.setAttribute("data-lucide", isPassword ? "eye-off" : "eye");
+  passwordToggleBtn.setAttribute("aria-label", isPassword ? "Hide password" : "Show password");
   lucide.createIcons();
 });
 
