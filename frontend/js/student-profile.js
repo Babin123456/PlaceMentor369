@@ -242,6 +242,8 @@ saveBtn?.addEventListener("click", async () => {
 // ============================
 // INIT
 // ============================
+"use strict";
+
 document.addEventListener("DOMContentLoaded", () => {
     loadProfile();
 });
