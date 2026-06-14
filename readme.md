@@ -173,9 +173,10 @@ frontend/
 ├── login.html                   # Login page
 └── register.html                # Registration page
 ```
+
 ---
 
-# ⚙️ Environment Variables
+⚙️ Environment Variables
 
 Create a .env file in the backend root:
 
@@ -188,10 +189,10 @@ PORT=5000
 ---
 
 # ▶️ Run the Project Locally
-### Install backend dependencies
+## Install backend dependencies
 npm install
 
-### Start backend server
+## Start backend server
 npm run dev
 
 Backend runs on:
