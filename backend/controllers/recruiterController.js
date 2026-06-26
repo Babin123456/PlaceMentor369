@@ -1,7 +1,7 @@
 import Job from "../models/job.js";
 import Application from "../models/application.js";
 import mongoose from "mongoose";
-import { sendStatusUpdateEmail } from "../utils/emailService.js";
+import emailQueue from "../queues/emailQueue.js";
 
 /* ======================================================
    CREATE JOB
@@ -116,13 +116,13 @@ export const updateApplicantStatus = async (req, res) => {
     await application.save();
 
     if (status === "shortlisted" || status === "rejected") {
-       await sendStatusUpdateEmail(
-        application.student.email,
-        application.student.name,
-        application.job.title,
-        application.job.company,
-        status
-      );
+       await emailQueue.add("email-job", {
+         studentEmail: application.student.email,
+         studentName: application.student.name,
+         jobTitle: application.job.title,
+         companyName: application.job.company,
+         status
+       });
     }
 
     return res.status(200).json({
