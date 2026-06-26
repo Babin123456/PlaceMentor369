@@ -31,7 +31,7 @@ export const createJob = async (req, res) => {
       return res.status(400).json({ message: "Missing required fields" });
     }
 
-    const existingJob = await Job.findOne({ title, company, recruiter: recruiterId, createdAt: { $gte: new Date(Date.now() - 5 * 60000) } });
+    const existingJob = await Job.findOne({ title: title.trim(), company: company.trim(), recruiter: recruiterId, createdAt: { $gte: new Date(Date.now() - 5 * 60000) } });
     if (existingJob) return res.status(400).json({ message: "Duplicate job posting detected. Please wait 5 minutes before posting the same job again." });
 
     const job = await Job.create({
