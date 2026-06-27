@@ -792,3 +792,11 @@ body.dark-mode .feature-card i{
     color: #c4b5fd;
 }
 }   }
+/* Custom Search Highlight Token */
+mark.custom-highlight {
+  background-color: #ffeb3b; /* Vibrant pastel yellow */
+  color: #000000;            /* Sharp black text for readability */
+  padding: 0 2px;
+  border-radius: 2px;
+  font-weight: bold;
+}
