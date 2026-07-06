@@ -79,7 +79,7 @@ roleInput?.addEventListener("change",    () => validateRole(roleInput));
 togglePasswordBtn?.addEventListener("click", () => {
   const isPassword = passwordInput.type === "password";
   passwordInput.type = isPassword ? "text" : "password";
- main
+ 
   const icon = togglePasswordBtn.querySelector("[data-lucide]");
   if (icon) icon.setAttribute("data-lucide", isPassword ? "eye-off" : "eye");
   if (window.lucide) lucide.createIcons();
@@ -87,12 +87,12 @@ togglePasswordBtn?.addEventListener("click", () => {
   eyeIcon.setAttribute("data-lucide", isPassword ? "eye-off" : "eye");
   togglePasswordBtn.setAttribute("aria-label", isPassword ? "Hide password" : "Show password");
   lucide.createIcons();
-main
+
 });
 
 // ── Submit ────────────────────────────────────────────────────────────────────
 
- main
+ 
 registerForm?.addEventListener("submit", async (e) => {
   e.preventDefault();
 
