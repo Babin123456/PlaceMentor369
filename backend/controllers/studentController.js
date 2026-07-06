@@ -40,7 +40,7 @@ function getReadinessTier(score) {
 }
 
 /* ============================
-   GET LOGGED-IN STUDENT PROFILE
+    GET LOGGED-IN STUDENT PROFILE
 ============================ */
 export const getProfile = async (req, res) => {
   try {
@@ -57,7 +57,7 @@ export const getProfile = async (req, res) => {
 };
 
 /* ============================
-   SAVE / UPDATE PROFILE
+    SAVE / UPDATE PROFILE
 ============================ */
 export const saveProfile = async (req, res) => {
   try {
@@ -90,7 +90,7 @@ export const saveProfile = async (req, res) => {
 };
 
 /* ============================
-   GET JOBS
+    GET JOBS
 ============================ */
 export const getJobs = async (req, res) => {
   try {
@@ -103,7 +103,7 @@ export const getJobs = async (req, res) => {
 };
 
 /* ============================
-   APPLY JOB
+    APPLY JOB
 ============================ */
 export const applyJob = async (req, res) => {
   try {
@@ -148,7 +148,7 @@ export const applyJob = async (req, res) => {
 };
 
 /* ============================
-   GET MY APPLICATIONS
+    GET MY APPLICATIONS
 ============================ */
 export const getApplications = async (req, res) => {
   try {
@@ -168,7 +168,7 @@ export const getApplications = async (req, res) => {
 };
 
 /* ============================
-   GET JOB APPLICATIONS FOR RECRUITER
+    GET JOB APPLICATIONS FOR RECRUITER
 ============================ */
 export const getJobApplications = async (req, res) => {
   try {
@@ -191,7 +191,7 @@ export const getJobApplications = async (req, res) => {
 };
 
 /* ============================
-   SKILL GAP ANALYSIS
+    SKILL GAP ANALYSIS
 ============================ */
 export const getSkillGapAnalysis = async (req, res) => {
   try {
@@ -280,7 +280,7 @@ export const getSkillGapAnalysis = async (req, res) => {
 };
 
 /* ============================
-   UPLOAD RESUME & AI PARSE
+    UPLOAD RESUME & AI PARSE
 ============================ */
 export const uploadResume = async (req, res) => {
   try {
@@ -360,7 +360,7 @@ export const uploadResume = async (req, res) => {
 };
 
 /* ============================
-   GET ATS DASHBOARD DATA
+    GET ATS DASHBOARD DATA
 ============================ */
 export const getAtsDashboard = async (req, res) => {
   try {

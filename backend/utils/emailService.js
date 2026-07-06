@@ -21,8 +21,8 @@ export const sendStatusUpdateEmail = (
 
   const htmlBody = `
     <div style="font-family: Arial, sans-serif; max-width: 600px;
-         margin: auto; padding: 24px; border: 1px solid #e0e0e0;
-         border-radius: 8px;">
+          margin: auto; padding: 24px; border: 1px solid #e0e0e0;
+          border-radius: 8px;">
       <h2 style="color: ${isShortlisted ? "#16a34a" : "#dc2626"};">
         ${isShortlisted ? "Congratulations!" : "Application Update"}
       </h2>
@@ -32,9 +32,9 @@ export const sendStatusUpdateEmail = (
         at <strong>${companyName}</strong> has been updated.
       </p>
       <div style="padding: 16px;
-           background: ${isShortlisted ? "#f0fdf4" : "#fff1f2"};
-           border-left: 4px solid ${isShortlisted ? "#16a34a" : "#dc2626"};
-           margin: 20px 0;">
+            background: ${isShortlisted ? "#f0fdf4" : "#fff1f2"};
+            border-left: 4px solid ${isShortlisted ? "#16a34a" : "#dc2626"};
+            margin: 20px 0;">
         <p style="margin: 0; font-size: 16px;">
           Status:
           <strong style="color: ${isShortlisted ? "#16a34a" : "#dc2626"};">
