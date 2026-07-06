@@ -65,6 +65,24 @@ if (themeToggle) {
     });
   });
 })();
+
+
+// Function to update the reading progress bar position
+function updateReadingProgressBar() {
+  const progressBar = document.getElementById('readingProgressIndicator');
+  if (!progressBar) return; 
+
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  
+  const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+  
+  progressBar.style.width = `${scrolled}%`;
+}
+
+// Attach optimized passive scroll listener
+window.addEventListener('scroll', updateReadingProgressBar, { passive: true });
+
 // Utility function to dynamically highlight matching text queries
 function highlightSearchKeywords(element, query) {
   if (!element.getAttribute('data-original-text')) {
@@ -119,3 +137,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
