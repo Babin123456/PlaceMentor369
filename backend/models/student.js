@@ -8,6 +8,21 @@ const studentSchema = new mongoose.Schema({
   college: { type: String, default: "" },
   skills: [{ type: String }],
   resume: { type: String },
+  aiReadinessScore: { type: Number, default: 0 },
+  aiRoadmap: [{ type: String }],
+
+  // ── Issue #353: resume parse status & fallback review queue ──────────────
+  resumeParseStatus: {
+    type: String,
+    enum: ["success", "flagged", "pending"],
+    default: "pending",
+  },
+  resumeReviewQueue: {
+    originalName: { type: String, default: "" },
+    mimeType: { type: String, default: "" },
+    reason: { type: String, default: "" },
+    flaggedAt: { type: Date },
+  },
 
   // 🔥 ADD THIS
   status: {
