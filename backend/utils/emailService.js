@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { APPLICATION_STATUS } from "../constants/applicationStatus.js";
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -15,7 +16,7 @@ export const sendStatusUpdateEmail = (
   companyName,
   status
 ) => {
-  const isShortlisted = status === "shortlisted";
+  const isShortlisted = status === APPLICATION_STATUS.SHORTLISTED;
 
   const subject = `Update regarding your application for ${jobTitle} at ${companyName}`;
 
