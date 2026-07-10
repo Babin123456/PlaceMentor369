@@ -2,6 +2,7 @@ import Job from "../models/job.js";
 import Application from "../models/application.js";
 import mongoose from "mongoose";
 import emailQueue from "../queues/emailQueue.js";
+import { APPLICATION_STATUS } from "../constants/applicationStatus.js";
 
 /* ======================================================
     CREATE JOB
@@ -102,10 +103,11 @@ export const updateApplicantStatus = async (req, res) => {
       return res.status(404).json({ message: "Application not found" });
     }
 
-    application.status = status;
+    const normalizedStatus = status.toLowerCase();
+    application.status = normalizedStatus;
     await application.save();
 
-    if (status === "shortlisted" || status === "rejected") {
+    if (normalizedStatus === APPLICATION_STATUS.SHORTLISTED || normalizedStatus === APPLICATION_STATUS.REJECTED) {
         await emailQueue.add("email-job", {
           studentEmail: application.student.email,
           studentName: application.student.name,
@@ -142,7 +144,7 @@ export const getRecruiterDashboardStats = async (req, res) => {
 
     const shortlisted = await Application.countDocuments({
       job: { $in: jobIds },
-      status: "shortlisted",
+      status: APPLICATION_STATUS.SHORTLISTED,
     });
 
     res.status(200).json({
