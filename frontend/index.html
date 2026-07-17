@@ -1384,9 +1384,35 @@ body.dark-mode .feature-card p{
 </head>
 
 <body>
+<a href="#main-content" class="skip-to-content">Skip to main content</a>
 
-  <a href="#main-content" class="skip-to-content">Skip to main content</a>
+<!-- HEADER -->
+<header class="header">
+  <div class="container nav">
+    <div class="logo">
+      <i class="fa-solid fa-arrow-up-right-dots"></i>
+      <span>PlacementorAI</span>
+    </div>
 
+    <button class="hamburger" aria-label="Toggle navigation menu" onclick="toggleMenu()">
+      <i class="fa-solid fa-bars" id="menuIcon"></i>
+    </button>
+
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="contact.html">Contact</a>
+      <a href="success-metrics.html">Success Metrics</a>
+      <a href="register.html">Sign Up</a>
+      <a href="login.html" class="login">Login</a>
+      <a href="register.html" class="btn primary">
+        Get Started
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
   <!-- HEADER -->
   <header class="header">
     <div class="container nav">
